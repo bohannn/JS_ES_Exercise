@@ -238,3 +238,88 @@ console.log("\n*************** object 2 *******************");
     console.log(cost4);
     console.log("Total cost is " + (rent1 + food1 + transport1 + entertaiinment1 + phonebill1));
 }
+
+
+// Function 1
+console.log("\n*************** function 1 *****************");
+
+function eg1(a, b) {
+    "use strict";
+    var sum = a + b;
+    return sum;
+}
+
+var eg2 = function(a, b) {
+    "use strict";
+    var sum = a + b;
+    return sum;    
+};
+
+// eg1 and eg2 are the same function
+// eg1(10, 20) = eg2(10, 20)
+// eg2 is recommened, more controllable for the programmer
+
+var greeting = function (a) {
+    "use strict";
+    if (a===true) {
+        return function(name) {
+            console.log("Hello, " + name + "!");
+        };
+    } else {
+        return function(name) {
+            console.log("Moi, " + name + "!");
+        };
+    }
+};
+
+greeting(true)("Bohan");
+
+var g = greeting(true);
+g("Bohan");
+
+g = greeting(false);
+g("Bohan");
+console.dir(g.prototype);
+
+// IIFE = Immediately Invoked Function Expression 
+(function () {
+    "use strict";
+    console.log("IIFE = Immediately Invoked Function Expression");
+})();
+
+(function (name) {
+    "use strict";
+    console.log("Hello, " + name + "!");
+})("Bohan");
+
+var calculator1 = function (x, y) {
+    "use strict";
+    var sum;
+    y = Number(y);
+
+    if(Number.isNaN(y)) {
+        sum = x;
+    } else {
+        sum = x + y;
+    }
+    return sum;
+};
+
+console.log("calculator1(13, 14): " + calculator1(13, 14));
+console.log("calculator1(20, \"five\"): " + calculator1(20, "five"));
+
+var cal = function (calculator) {
+    "use strict";
+    calculator(13, 14);
+};
+
+var calculator2 = function (_, z) {
+    "use strict";
+    console.log(z);
+};
+
+cal(calculator2);
+
+
+// Function 2
+console.log("\n*************** function 2 *****************");
