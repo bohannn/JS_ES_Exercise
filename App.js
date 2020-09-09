@@ -1,23 +1,3 @@
-// ES5,6,7,(8,9) task before the exam
-// Create a JS program, where you just use as many of the first exam features as you 
-// can = learn them for the exam
-
-// The business value of the app can be 0
-// Create a UI if wish, or just play behind the scenes and print to 
-// console and use debugger to see what happens in the memory
-
-// First adhoc object, later maybe ES6 etc. class syntax
-
-// e.g. class Bill could extend class Cost (with e.g. dueDate and isPaid)
-
-// daily, weekly, monthly, yearly
-const costSpan = [  {span:"Daily", days:1},
-                    {span:"Weekly", days:7},
-                    {span:"Monthly", days:30.45},
-                ];
-
-// Then do whatever reports / analysis or so, with all the costs
-
 // JS ES Features
 // Variables 1
 console.log("*************** JS ES Features *************");
@@ -86,6 +66,12 @@ variable2_rent(internet, electricity, water);
 console.log("Total rent is " + rent + " EUR");
 
 // const
+const costSpan = [  
+    {span:"Daily", days:1},
+    {span:"Weekly", days:7},
+    {span:"Monthly", days:30.45},
+];
+
 const costs = [ 
     {name:"Food", amount:10, span:costSpan[0]},
 ];
@@ -159,3 +145,64 @@ for(let i=0; i<testarray.length; i++) {
         
     }
 }
+
+
+// Object 1
+console.log("\n*************** object 1 *******************");
+
+{
+    let first = "firstname";
+    let last = "lastname";
+
+    let firstlast = {first, last}; 
+    // {a:"firstname", b:"lastname"}
+    // let ab = {a:a, b:b} same result as above
+    console.log(firstlast);
+
+    let name = {[first]:"Bohan", [last]:"Liu"}; 
+    // {firstname: "Bohan", lastname: "Liu"}
+    // [a] is called computed property name (ES6) 
+    console.log(name);
+
+    let info = {...name, age: 24};
+    // {firstname: "Bohan", lastname: "Liu", age: 24}
+    // ...name means copy all names and values in object name
+    console.log(info);
+
+    let arr1 = [1, 3, 5, 7, 9];
+    let arr2 = arr1;
+    let arr3 = [...arr1];
+    let arr4 = [...arr1, 11];
+    let arr5 = [...arr1, ...arr1];
+    let arr6 = [...arr1, arr1];
+    // arr6 = [1, 3, 5, 7, 9, [1, 3, 5, 7, 9]]
+    // The sixth element of arr6 is an array not a number
+
+    console.log(arr1);
+    console.log(arr2);
+    console.log(arr3);
+    console.log(arr4);
+    console.log(arr5);
+    console.log(arr6);
+    console.log(arr6[5]);
+
+    let monthcost1 = {rent: 799, food: 300, transport: 32};
+    console.log(monthcost1);
+
+    let monthcost2 = {...monthcost1};
+    console.log(monthcost2);
+    monthcost2.food = 270;
+    console.log(monthcost2);
+
+    let monthcost3 = {...monthcost1, transport: 32.5};
+    // Change the type of transport from int to float
+    console.log(monthcost3);
+
+    let monthcost4 = {...monthcost1, entertainment: 150, phonebill: 19.9};
+    // Add new name and value
+    console.log(monthcost4);
+}
+
+
+// Object 2
+console.log("\n*************** object 2 *******************");
