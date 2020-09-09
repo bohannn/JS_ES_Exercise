@@ -206,3 +206,35 @@ console.log("\n*************** object 1 *******************");
 
 // Object 2
 console.log("\n*************** object 2 *******************");
+
+{
+    let cost1 = {rent: 799, food: 300, transport: 32.5, entertainment: 150, phonebill: 19.9};
+    console.log(cost1);
+
+    const {rent, food, transport, entertainment, phonebill} = cost1;
+    /*  
+    const rent = cost1.rent;
+    const food = cost1.food;
+    const transport = cost1.transport;
+    const entertainment = cost1.entertainment;
+    const phonebill = cost1.phonebill; 
+    // Same as above
+    */
+    console.log(cost1);
+    console.log("Rent is " + rent + " EUR");
+    console.log("Total cost is " + (rent + food + transport + entertainment + phonebill) + " EUR");
+
+    let cost2 = {rent, food, transport, entertainment, phonebill};
+    console.log(cost2);
+
+    // let cost3 = {rent, food, transport, entertainment, phonebill, gym};
+    // console.log(cost3);
+    // This will show gym is not defined!
+
+    let cost4 = [799, 300, 32.5, 150, 19.9];
+    console.log(cost4);
+
+    const [rent1, food1, transport1, entertaiinment1, phonebill1] = cost4;
+    console.log(cost4);
+    console.log("Total cost is " + (rent1 + food1 + transport1 + entertaiinment1 + phonebill1));
+}
