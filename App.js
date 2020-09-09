@@ -16,9 +16,90 @@ const costSpan = [  {span:"Daily", days:1},
                     {span:"Monthly", days:30.45},
                 ];
 
-const costs = [ {name:"Rent", amount:270.25, span:costSpan[2]},
-                {name:"Food", amount:7.50, span:costSpan[0]},
-              ];
-
-
 // Then do whatever reports / analysis or so, with all the costs
+
+// JS ES Features
+// Variables 1
+console.log("*************** JS ES Features *************");
+console.log("*************** variables 1 ****************");
+
+var internet;
+var electricity;
+var water = 20;
+var rent = 710;
+
+function variable1_rent(i, e, w) {  //  i = internet, e = electricity, w = water
+    "use strict"; 
+    // Defines that JavaScript code should be executed in "strict mode".
+    // The "use strict" directive was new in ECMAScript version 5.
+    // With strict mode, you can not, for example, use undeclared variables.
+
+    var otherfee;
+    otherfee = i + e + w;
+    console.log("Other fees total " + otherfee + " EUR");
+
+    rent = rent + otherfee;
+    // console.log(rent);
+}
+
+internet = 0;
+electricity = 35;
+
+console.log("\nThe rent does not include other fees is " + rent + " EUR");
+console.log("After calculate by the function: ");
+
+variable1_rent(internet, electricity, water);
+console.log("Total rent is " + rent + " EUR");
+
+
+// Variables 2
+console.log("\n*************** variables 2 ****************");
+rent = 710;
+
+// let
+function variable2_rent(i, e, w) {
+    "use strict";
+    var otherfee;
+    let person = 3; 
+    // The let statement declares a block-scoped local variable
+
+    if (person > 1) {
+        otherfee = i + e + w * 0.9 * person;
+        // If more than 1 person live in the apartment, the water fee will be 20 * 0.9 each person
+    } else {
+        otherfee = i + e + w;
+    }
+
+    console.log("Other fees total " + otherfee + " EUR");
+
+    rent = rent + otherfee;
+}
+// otherfee and person cannot be used outside the function variable2_rent
+
+internet = 0;
+electricity = 35;
+
+console.log("\nThe rent does not include other fees is " + rent + " EUR");
+console.log("After calculate by the function: ");
+
+variable2_rent(internet, electricity, water);
+console.log("Total rent is " + rent + " EUR");
+
+// const
+const costs = [ 
+    {name:"Food", amount:10, span:costSpan[0]},
+];
+console.log(costs.length);
+
+const cost = {name:"", amount:0, span:costSpan[0]};
+cost.name = "Rent";
+cost.amount = rent;
+cost.span = costSpan[2];
+
+costs.push(cost);
+console.log(costs.length);
+console.log(costs);
+
+
+// Variables 3
+console.log("\n*************** variables 3 ****************");
