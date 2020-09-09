@@ -284,7 +284,7 @@ console.dir(g.prototype);
 // IIFE = Immediately Invoked Function Expression 
 (function () {
     "use strict";
-    console.log("IIFE = Immediately Invoked Function Expression");
+    console.log("\nIIFE = Immediately Invoked Function Expression");
 })();
 
 (function (name) {
@@ -305,7 +305,7 @@ var calculator1 = function (x, y) {
     return sum;
 };
 
-console.log("calculator1(13, 14): " + calculator1(13, 14));
+console.log("\ncalculator1(13, 14): " + calculator1(13, 14));
 console.log("calculator1(20, \"five\"): " + calculator1(20, "five"));
 
 var cal = function (calculator) {
@@ -323,3 +323,72 @@ cal(calculator2);
 
 // Function 2
 console.log("\n*************** function 2 *****************");
+
+{
+    let totalrent = (rent, water, electricity, internet) => {
+        console.log("Rent: " + rent);
+        console.log("Water: " + water);
+        console.log("Electricity: " + electricity);
+        console.log("Internet: " + internet);
+        console.log("Total rent is " + (rent + water + electricity + internet) + " EUR");
+    }
+    totalrent(710, 20, 35, 0);
+
+    var gym = (()=>1.5)();
+    console.log("\nGym card per day is " + gym + " EUR");
+    var g = (day => "Gym card fee per month is " + day * 30 + " EUR")(gym);
+    console.log(g);
+
+// Remember these 4 facts about arrow functions:
+// 1. parameter list options:
+//   0 parameters:        ()
+//   1 parameter, Note!:  (name)   OR   name  
+//   2 or more parameters (x,y)
+
+// 2. if no function body {  } then 
+// automatic return of one value created/defined after =>
+
+// 3. if the created value is adhoc object, then
+// () are needed around the object, otherwise 
+// {} would be confused for the function body (block):
+      // () => {a:123, b:456}   
+      // This would be a problem!
+
+// 4. if using the keyword 'this', the 'this' refers to the outer object
+// and not to the function object itself! 
+// -> sometimes you need arrow function, and normal would not work!!!
+// (In traditional function code, 'this' refers to the function object
+// itself. Big difference!)
+// Typically in some kind of event-handler function (React,Redux) we MUST
+// use arrow function and traditional with same code would not work.
+
+
+    const entertainment = ['Netflix', 'Disney+', 'minigolf', 'zoo', 'sauna', 'skiing'];
+    // Entertaiment costs may include...
+    console.log(entertainment);
+    const half = entertainment.filter( (_,index) => index%2 == 0 );
+    console.log(half); 
+}
+
+
+// Function 3
+console.log("\n*************** function 3 *****************");
+
+{
+    var totalrent = function (water, electricity, internet, person, rent = 710) {
+        var total = rent + water * 0.9 * person + electricity  + internet;
+        return total;
+    }
+    console.log("Default rent value is 710");
+    console.log("\nMissing rent value: ");
+    console.log("Total rent is " + totalrent(20, 35, 0, 3) + " EUR");
+
+    console.log("\nRent value is undefined: ");
+    console.log("Total rent is " + totalrent(20, 35, 0, 3, undefined) + " EUR");
+
+    console.log("\nRent value is null: ");
+    console.log("Total rent is " + totalrent(20, 35, 0, 3, null) + " EUR");
+
+    console.log("\nChange rent value to 800: ")
+    console.log("Total rent is " + totalrent(20, 35, 0, 3, 800) + " EUR");
+}
