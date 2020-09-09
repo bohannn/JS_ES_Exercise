@@ -103,3 +103,59 @@ console.log(costs);
 
 // Variables 3
 console.log("\n*************** variables 3 ****************");
+
+var testarray = [
+    false,
+    null,
+    undefined,
+    0,
+    NaN,
+    '',
+    "",
+    ``,
+    document.all,
+    "true",
+    "false",
+    true,
+    " ",
+    "abc",
+    " abc ",
+    "three",
+    "-12",
+    "0",
+    "100",
+    310,
+    "500",
+    "5.20",
+    " 1200 ",
+    "6.66",
+    "6,66",
+    /[\u0400-\u04FF]+/g,    
+];
+
+for(let i=0; i<testarray.length; i++) {
+    
+    let input = testarray[i];
+    let number = Number(input);
+
+// The correct value should be a number and greater than zero or equal to zero
+
+    if( number >= 0 && !Number.isNaN(number) && input && (typeof(input)==="string" && input.trim().length!==0)) {
+        
+        if(typeof(testarray[i])==="string") {
+            console.log("Correct! The number value is: " + number);
+        } else {
+            console.log("Correct! The number value is: " + number);
+        }
+    }
+
+    if( number < 0 || Number.isNaN(number) || (!input && input !==0) || typeof(testarray[i])==="boolean" || (typeof(input)==="string" && input.trim().length===0)) {
+        
+        if(typeof(testarray[i])==="string") {
+            console.log("Error! The input '" + input + "' is wrong input! The number value of the input is: " + number);
+        } else {
+            console.log("Error! The input '" + input + "' is wrong input! The number value of the input is: " + number);
+        }
+        
+    }
+}
