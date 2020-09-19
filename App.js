@@ -392,3 +392,123 @@ console.log("\n*************** function 3 *****************");
     console.log("\nChange rent value to 800: ")
     console.log("Total rent is " + totalrent(20, 35, 0, 3, 800) + " EUR");
 }
+
+// Class and Class inheritance
+class MonthCheck {
+    constructor(month) {
+        this.name = 'MonthCheck';
+        if (month == 2) {
+            this.days = 28;
+        }else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+            this.days = 31;
+        } else {
+            this.days = 30;
+        }
+    }
+}
+
+class CostPerDay extends MonthCheck {
+    constructor(money, month) {
+        super(month);
+        this.money = money;
+        this.name = 'CostPerDay';
+    }
+
+    get cost() {
+        return this.money / this.days;
+    }
+}
+
+let gymcost = new CostPerDay(39, 8);
+console.log("\nThe cost is " + (gymcost.cost).toFixed(2) + " per day.");
+
+// Template literals
+{
+    let firstname = 'Bohan';
+    let lastname = 'Liu';
+
+    function myTag(strings, firstname, lastname) {
+        let str0 = strings[0];
+        let str1 = strings[1];
+        let str2 = strings[2];
+
+        return `${str0}${firstname}${str1}${lastname}${str2}`;
+    }
+
+    let output = myTag`This code is written by ${firstname} ${lastname}.`;
+    console.log("\n" + output);
+}
+
+
+// Export and import
+// import monthName from './Month';
+
+// console.log(monthName(11).name + ' ' + monthName(11).days);
+
+
+// Object methods example
+{
+    const obj_method = {
+        monthname(month) {
+            const monthnames = [
+                'January', 
+                'February', 
+                'March', 
+                'April', 
+                'May', 
+                'June', 
+                'July', 
+                'August', 
+                'September', 
+                'October', 
+                'November', 
+                'December'
+            ];
+
+            let name = monthnames[month - 1];
+
+            return name;
+        },
+        days(month) {
+            let days = 0;
+            if (month == 2) {
+                days = 28;
+            }else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                days = 31;
+            } else {
+                days = 30;
+            }
+
+            return days;
+        }
+    }
+
+    console.log("\n" + obj_method.monthname(12) + " has " + obj_method.days(12) + " days.")
+}
+
+console.log("\n");
+
+// JSON test
+var json = JSON.parse('{"666":"Bohan"}');
+
+// console.log(json.666);
+// console.log(a."666");
+console.log(json["666"]);
+console.log(json[666]);
+
+
+// Some array features
+
+{
+    const testarray = ["rent", "food", "transport", "entertaiinment", "phonebill"];
+    console.log("\n***Array.forEach***");
+    testarray.forEach(e => console.log(e));
+    
+    const newarray1 = testarray.filter(e => e.length > 4);
+    console.log("\n***array.filter***");
+    newarray1.forEach(e => console.log(e));
+
+    const newarray2 = testarray.map(e => e + " cost is ...");
+    console.log("\n***array.map***");
+    newarray2.forEach(e => console.log(e));
+}
